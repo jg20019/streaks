@@ -51,6 +51,9 @@ const inTally = (date) => {
 }
 
 const loadState = () => {
+  const json = localStorage.getItem('streaks')
+  if (json === null) return;
+
   const s = JSON.parse(localStorage.getItem('streaks'))
   state.year = s.year
   state.month = s.month
