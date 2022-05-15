@@ -1,7 +1,21 @@
-# Vue 3 + Vite
+# Streaks
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple project for keeping track of how much consistenly I work on projects. 
+Right now it only supports one project, but it is simple enough to be useful
+for that purpose. 
 
-## Recommended IDE Setup
+The idea is that seeing all of the progress made at a glance is motivating. 
+Being able to see all of the days that I worked on something keeps me 
+motivate to keep working on those things. I want to build the habit of
+working consistently. 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This is one of several projects inspired by this youtube
+video - [The Habits of Effective Artists by Andrew Price](https://www.youtube.com/watch?v=vM39qhXle4g)
+
+There are several additions that need to be made such as:
+[ ] Saving to a database instead of just to local storage
+[ ] Adding support for mutliple projects
+[ ] Preventing users from marking dates in the future
+[ ] Viewing a year at a glance 
+[ ] Keeping track of the current streak
+
