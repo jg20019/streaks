@@ -2,7 +2,8 @@
 
 import { computed, reactive } from 'vue'
 
-import { eachDayOfInterval, 
+import { compareDesc, 
+         eachDayOfInterval, 
          endOfMonth,
          format,
          nextSaturday, 
@@ -17,9 +18,10 @@ const state = reactive({
   tallies: new Set() // list of dates the work was done.
 })
 
+const today = (new Date())
+
 
 const daysInCalendarView = computed(() => {
-
   const start = new Date(state.year, state.month, 1)
   const end = endOfMonth(start)
 
@@ -34,7 +36,15 @@ const daysInCalendarView = computed(() => {
   return dates
 })
 
+const isFutureDate = (date) => {
+  return compareDesc(date, today) === -1
+}
+
 const toggleDate = (date) => {
+  if (isFutureDate(date)) {
+    return 
+  }
+
   const key = format(date, "yyyy-MM-dd")
   if (state.tallies.has(key)) {
     state.tallies.delete(key)
@@ -94,7 +104,7 @@ loadState()
       v-for="date in daysInCalendarView"
       key="date"
       @click="() => toggleDate(date)"
-      :class="{ clicked: inTally(date) }"
+      :class="{ clicked: inTally(date), future: isFutureDate(date) }"
     >
       <label class="date-marker">
         {{ date.getDate () }}
@@ -147,6 +157,16 @@ loadState()
     color: white;
     background-color: #2c3e50;
     font-size: 18px;
+  }
+
+  .future {
+    color: white;
+    background-color: darkgrey;
+  }
+
+  p.future:hover {
+    color: white;
+    background-color: darkgrey;
   }
 
 </style>
